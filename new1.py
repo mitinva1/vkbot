@@ -21,6 +21,43 @@ except vk_api.AuthError as error_msg:
  #   vk.method('messages.send', {'user_id':user_id,'message':s})
 #print('import is end')
 z=1
+"""print('id{}: "{}"'.format(event.user_id, event.text), end=' ')
+            vk.messages.send(
+                user_id=event.user_id,
+                #attachment=','.join(attachments),
+                random_id=get_random_id(),
+                message='fdsgdsgsdfs'
+            )
+            
+        
+            #z = ['привет', 'Привет', 'здаров', 'Здаров', 'Здаров', 'Здравс', 'здравс', 'добрый', 'Добрый']
+        if event.type == VkEventType.MESSAGE_NEW and event.to_me and event.text:
+            if event.text[:6] in z:
+                vk.messages.send(
+                user_id=event.user_id,
+                #attachment=','.join(attachments),
+                random_id=get_random_id(),
+                message='Здравствуйте, бот еще не настроен, свяжитесь, пожалуйста, с нами напрямую https://vk.com/im?sel=190302556'
+                )
+                print('id{}: "{}"'.format(event.user_id, event.text), end=' ')
+                dd = 233357783
+                boris = 190302556
+                vk.messages.send(
+                user_id=dd,
+                #attachment=','.join(attachments),
+                random_id=get_random_id(),
+                message='Кто-то, что-то написал'
+                )
+                vk.messages.send(
+                user_id=boris,
+                #attachment=','.join(attachments),
+                random_id=get_random_id(),
+                message='Кто-то, что-то написал'
+                )
+                #print('id{}: "{}"'.format(event.user_id, event.text, end=' ')
+
+                
+                continue"""
 
 
 #vk = vk_session.get_api()
