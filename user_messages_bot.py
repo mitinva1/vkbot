@@ -54,7 +54,7 @@ def main():
         
         z = ['привет', 'Привет', 'здаров', 'Здаров', 'Здаров', 'Здравс', 'здравс', 'добрый', 'Добрый']
         if event.type == VkEventType.MESSAGE_NEW and event.to_me and event.text:
-            if int(event.text) < 10 and int(event.text) >= 0:
+            if int(event.text) < 4 and int(event.text) >= 0:
                 vk.messages.send(
                 user_id=event.user_id,
                 #attachment=','.join(attachments),
