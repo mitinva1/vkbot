@@ -2,11 +2,13 @@
 # -*- coding: utf-8 -*-
 import datetime
 import requests
-
 import vk_api
 from vk_api import VkUpload
 from vk_api.longpoll import VkLongPoll, VkEventType
+from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
+import pymysql.cursors
 from vk_api.utils import get_random_id
+
 
 
 def main():
@@ -36,32 +38,27 @@ def main():
                   '1': 'https://vk.com/mks.glass?z=photo233357783_457239318%2Fwall-45845358_929',
                   '2': 'https://vk.com/album-45845358_269178498', 
                   '3': """https://vk.com/album-45845358_269178605 - фотоальбом
-                          https://vk.com/mks.glass?w=wall-45845358_932 - лифт в подвал"""}  
+                          https://vk.com/mks.glass?w=wall-45845358_932 - лифт в подвал""",
+                  '00': 'Привет'}  
     
     paragraph1 = ("""\nвыберете пункт:\n0 - связаться с нами
                   1 - общая информация
                   2 - loft перегородки
                   3 - автоматика и автоматические и воротные системы\n""")
     for event in longpoll.listen():
-        """if event.type == VkEventType.MESSAGE_NEW and event.to_me and event.text == 'Мосвремя':
-            print('id{}: "{}"'.format(event.user_id, event.text), end=' ')
-            vk.messages.send(
-                user_id=event.user_id,
-                #attachment=','.join(attachments),
-                random_id=get_random_id(),
-                message='fdsgdsgsdfs'
-            )"""
-        
         z = ['привет', 'Привет', 'здаров', 'Здаров', 'Здаров', 'Здравс', 'здравс', 'добрый', 'Добрый']
+        z2 = ['0','1','2','3','4']
         if event.type == VkEventType.MESSAGE_NEW and event.to_me and event.text:
-            if int(event.text) < 4 and int(event.text) >= 0:
+            if event.text in z2 or event.text in z:
+                print('id{}: "{}"'.format(event.user_id, event.text, end=' '))
+                if event.text[:6] in z:
+                    event.text = '00'#переводит в словарь для приветствия
                 vk.messages.send(
                 user_id=event.user_id,
                 #attachment=','.join(attachments),
                 random_id=get_random_id(),
                 message=quest_code[str(event.text)] + paragraph1
                 )
-                print('id{}: "{}"'.format(event.user_id, event.text), end=' ')
                 dd = 233357783
                 boris = 190302556
                 vk.messages.send(
@@ -76,10 +73,11 @@ def main():
                 random_id=get_random_id(),
                 message='Кто-то, что-то написал'
                 )
-                #print('id{}: "{}"'.format(event.user_id, event.text, end=' ')
+                #
 
                 
                 continue
+                
             print('id{}: "{}"'.format(event.user_id, event.text), end=' ')
 
             response = session.get(
