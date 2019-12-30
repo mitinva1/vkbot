@@ -1,22 +1,13 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+                        #!/usr/bin/env python3
+                                # -*- coding: utf-8 -*-
 import datetime
 import requests
 import vk_api
 from vk_api import VkUpload
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
-import pymysql.cursors
 from vk_api.utils import get_random_id
 
-def get_connection():
-    connection = pymysql.connect(host='localhost',
-                                 user='mitinva1',
-                                 password='ruuns27089',
-                                 db='answerdb',
-                                 charset='utf8mb4',
-                                 cursorclass=mymysql.cursors.DictCursor)
-    return connection
 
 def main():
     session = requests.Session()
@@ -49,7 +40,7 @@ def main():
                           https://vk.com/mks.glass?w=wall-45845358_932 - лифт в подвал""",
                   '00': 'Привет'}  
     
-    paragraph1 = ("""\nвыберете пункт:\n0 - связаться с нами
+    paragraph1 = ("""\n\nвыберете пункт:\n0 - связаться с нами
                   1 - общая информация
                   2 - loft перегородки
                   3 - автоматика и автоматические и воротные системы\n""")
@@ -61,11 +52,22 @@ def main():
                 print('id{}: "{}"'.format(event.user_id, event.text, end=' '))
                 if event.text[:6] in z:
                     event.text = '00'#переводит в словарь для приветствия
+                image_url = response.get('Image')
+                attachments = []
+                if image_url:
+                    image = session.get(image_url, stream=True)
+                    photo = upload.photo_messages(photos=image.raw)[0]
+
+                    attachments.append(
+                    'photo{}_{}'.format(photo['owner_id'], photo['id'])
+                )
+                
+
                 vk.messages.send(
                 user_id=event.user_id,
                 #attachment=','.join(attachments),
                 random_id=get_random_id(),
-                message=quest_code[str(event.text)] + paragraph1
+                message=quest_code[str(event.text)] + paragraph1 + 'sdfasdas'
                 )
                 dd = 233357783
                 boris = 190302556
