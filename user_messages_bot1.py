@@ -13,7 +13,7 @@ def main():
     session = requests.Session()
 
     # Авторизация пользователя:
-    login, password = '+79304017447', 'runs47089'
+    login, password = '+79304017447', 'getattr7089'
     vk_session = vk_api.VkApi(login, password)
 
     try:

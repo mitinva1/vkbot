@@ -9,20 +9,12 @@ from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 import pymysql.cursors
 from vk_api.utils import get_random_id
 
-def get_connection():
-    connection = pymysql.connect(host='localhost',
-                                 user='mitinva1',
-                                 password='ruuns27089',
-                                 db='answerdb',
-                                 charset='utf8mb4',
-                                 cursorclass=mymysql.cursors.DictCursor)
-    return connection
 
 def main():
     session = requests.Session()
 
     # Авторизация пользователя:
-    login, password = '+79304017447', 'runs47089'
+    login, password = '+79304017447', 'getattr7089'
     vk_session = vk_api.VkApi(login, password)
 
     try:
