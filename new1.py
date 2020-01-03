@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 
-import sqlite3
-conn = sqlite3.connect('answerdb1.sqlite3')
-c = conn.cursor()
-answer = '2'
-t = (answer,)
-c.execute('select answer from answers where question=?', t)
-answer = c.fetchall()[0]
-answer = answer[0]
+f2 = open("answer_databse.txt")
+def insert(s1,s2):
+    import sqlite3
+    conn = sqlite3.connect('answerdb2.sqlite3')
+    c = conn.cursor()
+    c.execute("""insert into answers values ('%s','%s')"""%(s1,s2))
+    conn.commit()
+    c.close()

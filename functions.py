@@ -3,7 +3,7 @@
 
 def answer_db(question):
     import sqlite3
-    conn = sqlite3.connect('answerdb1.sqlite3')
+    conn = sqlite3.connect('answerdb2.sqlite3')
     c = conn.cursor()
     answer = question
     t = (answer,)
