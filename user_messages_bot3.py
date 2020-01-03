@@ -35,7 +35,7 @@ def main():
     for event in longpoll.listen():
         if event.type == VkEventType.MESSAGE_NEW and event.to_me and event.text:
             try:
-                answer = functions.answer_db(str(event.text.lower()))
+                answer = functions.answer_db(event.text.lower().replace('!', '').replace('?', ''))
             except:
                 answer = '7089'
             try:
