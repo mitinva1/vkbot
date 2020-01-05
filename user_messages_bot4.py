@@ -13,21 +13,18 @@ import functions
 
 
 def main():
-    session = requests.Session()
+    #session = requests.Session()
     # Авторизация пользователя:
-    login, password = '+79304017447', 'reptule7089'
+    login, password = '+79304017447', 'getattr7089'
     vk_session = vk_api.VkApi(login, password)
-    try:
-        vk_session.auth(token_only=True)
-    except vk_api.AuthError as error_msg:
-        print(error_msg)
+    vk_session.auth()
     # Авторизация группы (для групп рекомендуется использовать VkBotLongPoll):
     # при передаче token вызывать vk_session.auth не нужно
 #mkskey cb1b116bf5f824747cf3d8356da7c1605f511c92193dde4939a31330f74e1dddee3f1353fb4098ee73fe9
 #370c0e1fa63820c1666f6b70943ff2e6ac24028651cf04b047c9813f604c60e962406153d4c7faaf17ea8
 #loftkey cbfd5ce214721b092276ed6c946321436f94ced4c96ceb27edd5bc3d7f13c82eb4ac0ff44f1bb277d9afe
-    vk_session = vk_api.VkApi(token='370c0e1fa63820c1666f6b70943ff2e6ac24028651cf04b047c9813f604c60e962406153d4c7faaf17ea8')
-    vk = vk_session.get_api()
+    #vk_session = vk_api.VkApi(token='370c0e1fa63820c1666f6b70943ff2e6ac24028651cf04b047c9813f604c60e962406153d4c7faaf17ea8')
+    #vk = vk_session.get_api()
     upload = VkUpload(vk_session)  # Для загрузки изображений
     longpoll = VkLongPoll(vk_session)
 
@@ -52,23 +49,6 @@ def main():
                 random_id=get_random_id(),
                 message= answer + '\n'+functions.answer_db('ms000'),
                 )
-                #для оповещения
-                dd = 233357783
-                boris = 190302556
-                # vk.messages.send(
-                # user_id=dd,
-                # #attachment=','.join(attachments),
-                # random_id=get_random_id(),
-                # message='Кто-то, что-то написал'
-                # )
-                # vk.messages.send(
-                # user_id=boris,
-                # #attachment=','.join(attachments),
-                # random_id=get_random_id(),
-                # message='Кто-то, что-то написал'
-                # )
-                #
-
                 
                 
             else:    
